@@ -1,0 +1,519 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SmartScannerSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import SystemConfiguration.CaptiveNetwork
+import Combine
+import CommonCrypto
+import CoreLocation
+import CoreMedia
+import Foundation
+import Network
+@_exported import SmartScannerSDK
+import Swift
+import SystemConfiguration
+import UIKit
+import _Concurrency
+import _StringProcessing
+import os.log
+import os
+public enum SamLog {
+  public static func printOut(_ string: Swift.String, save: Swift.Bool = true)
+}
+public enum CRC32 {
+  public static func checksum<T>(bytes: T) -> Swift.UInt32 where T : Foundation.DataProtocol
+}
+public struct MailComponnents {
+  public init(mailto: Swift.String, mailCCto: Swift.String, subject: Swift.String, body: Swift.String, mailData: [SmartScannerSDK.MailComponnents.MailData])
+  public let mailto: Swift.String
+  public let mailCCto: Swift.String
+  public let subject: Swift.String
+  public let body: Swift.String
+  public let mailData: [SmartScannerSDK.MailComponnents.MailData]
+  public struct MailData {
+    public init(attucmentData: Foundation.Data, attucmentMime: Swift.String, fileName: Swift.String)
+    public let attucmentData: Foundation.Data
+    public let attucmentMime: Swift.String
+    public let fileName: Swift.String
+  }
+}
+public struct ScanConfig {
+  public var allowedScannerTypes: Swift.Set<SmartScannerSDK.SamScannerType>
+  public var scanTimeInSeconds: Swift.Int
+  public init(allowedScannerTypes: Swift.Set<SmartScannerSDK.SamScannerType> = Set(SamScannerType.allCases), scanTimeInSeconds: Swift.Int = 120)
+}
+public class AuthRepository {
+  public init(requestRepository: SmartScannerSDK.SamRequestRepositoryProtocol)
+  public func login(username: Swift.String, password: Swift.String) -> Combine.AnyPublisher<SmartScannerSDK.LoginResponse.Auth, SmartScannerSDK.SamNetworkError>
+  public func signUp(username: Swift.String, password: Swift.String) -> Combine.AnyPublisher<SmartScannerSDK.UserLogin, SmartScannerSDK.SamNetworkError>
+  @objc deinit
+}
+public protocol SamRequestRepositoryProtocol {
+  func request<T>(_ apiModel: SmartScannerSDK.SamAPIModelType, replacementForHeader: [Swift.String : Swift.String]?, completion: @escaping (Swift.Result<T, SmartScannerSDK.SamNetworkError>) -> Swift.Void) where T : Swift.Decodable, T : Swift.Encodable
+  func request(_ apiModel: SmartScannerSDK.SamAPIModelType, replacementForHeader: [Swift.String : Swift.String]?, completion: @escaping (Swift.Result<Foundation.Data, SmartScannerSDK.SamNetworkError>) -> Swift.Void)
+  func request(_ apiModel: SmartScannerSDK.SamAPIModelType, replacementForHeader: [Swift.String : Swift.String]?, completion: @escaping (Swift.Result<Swift.Bool, SmartScannerSDK.SamNetworkError>) -> Swift.Void)
+}
+public protocol SamRepository {
+  var repository: SmartScannerSDK.SamRequestRepositoryProtocol { get }
+}
+public enum JSONResponseDecoder {
+  public typealias JSONDecodeCompletion<T> = (T?, Swift.Error?) -> Swift.Void
+  public typealias JSONDecodeDictionaryCompletion = ([Swift.String : Any]?, SmartScannerSDK.SamNetworkError?) -> Swift.Void
+  public static func decodeFrom<T>(_ responseData: Foundation.Data, returningModelType: T.Type, completion: (T?, Swift.Error?) -> Swift.Void) where T : Swift.Decodable
+  public static func dictionaryFrom(_ responseData: Foundation.Data, completion: ([Swift.String : Any]?, SmartScannerSDK.SamNetworkError?) -> Swift.Void)
+}
+public enum SamSDKError : Swift.Error, Swift.Equatable {
+  case UNKNOWN
+  case MISSING_WIFI_CONNECTION
+  case LOST_WIFI_CONNECTION
+  case MISSING_LOCATION_PERMISSIONS
+  case SCAN_IS_ALREADY_RUNNING
+  case UNAUTHORIZED
+  case SERVER_ERROR
+  public var description: (code: Swift.Int, description: Swift.String, title: Swift.String) {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: SmartScannerSDK.SamSDKError, b: SmartScannerSDK.SamSDKError) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Swift.String {
+  public func makeCString() -> Swift.UnsafeMutablePointer<Swift.Int8>
+}
+extension Dispatch.DispatchQueue {
+  public static func background(delay: Swift.Double = 0.0, background: (() -> Swift.Void)? = nil, completion: (() -> Swift.Void)? = nil)
+}
+@_hasMissingDesignatedInitializers public class Scan {
+  public var cancellables: Swift.Set<Combine.AnyCancellable>
+  public var useRealSubnet: Swift.Bool
+  public var isDeleteBeforeScan: Swift.Bool
+  public var scanIsRunning: Swift.Bool {
+    get
+    set
+  }
+  public var deviceIp: Swift.String
+  public var gateWayIp: Swift.String
+  public var gateWayMac: Swift.String
+  public var gateWaySubnet: Swift.String
+  public var allDevices: [SmartScannerSDK.Device]
+  public var lastScanResult: SmartScannerSDK.ScanResult? {
+    get
+    set
+  }
+  public static let shared: SmartScannerSDK.Scan
+  public func observeDevices() -> Combine.AnyPublisher<[SmartScannerSDK.Device], SmartScannerSDK.SamSDKError>
+  public func observeProgress() -> Combine.AnyPublisher<Swift.Int, Swift.Never>
+  public func removeDevices() -> Combine.AnyPublisher<Swift.Error?, Swift.Never>
+  public func scan(params: SmartScannerSDK.ScanConfig) -> Combine.AnyPublisher<SmartScannerSDK.ScanResult?, SmartScannerSDK.SamSDKError>
+  public func fetchSSID() -> Combine.CurrentValueSubject<Swift.String?, SmartScannerSDK.SamSDKError>
+  @objc deinit
+}
+extension SmartScannerSDK.Scan {
+  public func killScan()
+}
+public let showPrintOuts: Swift.Bool
+@_hasMissingDesignatedInitializers public class SmartScanner {
+  public static var latestFetchJsonString: Swift.String
+  final public let credentialManager: SmartScannerSDK.CredentialsManager
+  public var cancellables: Swift.Set<Combine.AnyCancellable>
+  public var saveDeviceTypes: [SmartScannerSDK.Dtype]? {
+    get
+    set
+  }
+  public var logPublisher: Combine.CurrentValueSubject<Swift.String?, Swift.Never>
+  public func getScanInstance() -> SmartScannerSDK.Scan
+  public static func getInstance() -> SmartScannerSDK.SmartScanner
+  public func setup(token: Swift.String? = nil)
+  public func requestNetworkAuthorization(completion: @escaping (Swift.Bool) -> Swift.Void)
+  public func getDeviceTypes() -> Combine.PassthroughSubject<[SmartScannerSDK.Dtype], SmartScannerSDK.SamNetworkError>
+  public func buildFileToLoger() -> [SmartScannerSDK.MailComponnents.MailData]
+  @objc deinit
+}
+public struct UserLogin : Swift.Codable {
+  public init(id: Swift.String, username: Swift.String, password: Swift.String)
+  public let id: Swift.String
+  public let username: Swift.String
+  public let password: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct LoginResponse : Swift.Codable {
+  public let authenticationResult: SmartScannerSDK.LoginResponse.Auth
+  public struct Auth : Swift.Codable {
+    public let ExpiresIn: Swift.Int
+    public let RefreshToken: Swift.String
+    public let IdToken: Swift.String
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public class CredentialsManager {
+  public var env: SmartScannerSDK.ServerEnvironment
+  public init()
+  public func getCredentials()
+  public func saveCredentials()
+  public func clearCredentials()
+  @objc deinit
+}
+public enum ConnectionType {
+  case wifi
+  case cellular
+  case other
+  case none
+  public static func == (a: SmartScannerSDK.ConnectionType, b: SmartScannerSDK.ConnectionType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public class SamRequestRepository : SmartScannerSDK.SamRequestRepositoryProtocol {
+  public init()
+  public func request<T>(_ apiModel: SmartScannerSDK.SamAPIModelType, replacementForHeader: [Swift.String : Swift.String]?, completion: @escaping (Swift.Result<T, SmartScannerSDK.SamNetworkError>) -> Swift.Void) where T : Swift.Decodable, T : Swift.Encodable
+  public func request(_ apiModel: SmartScannerSDK.SamAPIModelType, replacementForHeader: [Swift.String : Swift.String]?, completion: @escaping (Swift.Result<Foundation.Data, SmartScannerSDK.SamNetworkError>) -> Swift.Void)
+  public func request(_ apiModel: SmartScannerSDK.SamAPIModelType, replacementForHeader: [Swift.String : Swift.String]?, completion: @escaping (Swift.Result<Swift.Bool, SmartScannerSDK.SamNetworkError>) -> Swift.Void)
+  @objc deinit
+}
+public struct Device : Swift.Codable, Swift.Comparable, Swift.Identifiable {
+  public init(device_type_uuid: Swift.String? = nil, parental_control: Swift.Bool? = nil, management_app_installed: Swift.Bool? = nil, device_type: Swift.Int? = nil, deviceType: SmartScannerSDK.DeviceType = DeviceType.unknown, last_seen: Swift.Double? = nil, mac: Swift.String? = nil, signalStrength: Swift.Int = 0, networkInterface: SmartScannerSDK.NetworkInterface = NetworkInterface.unknown, ip: Swift.String = "", ipv6S: [Swift.String]? = nil, zoneName: Swift.String = "", deviceModel: Swift.String? = nil, deviceSubModel: Swift.String? = nil, vendor: Swift.String? = nil, type: Swift.String? = nil, product: Swift.String? = nil, os: Swift.String? = nil, ownersName: Swift.String = "", user_id: Swift.Int? = nil, deviceIsSecuired: Swift.Bool = true, conn_type: Swift.Int? = nil, device_type_id: Swift.Int? = nil, av_enforce: Swift.Int = 1, endpoint_installed: Swift.Bool? = nil, anti_virus: Swift.Bool? = nil, ep_capabilities: [Swift.String]? = nil, software: [Swift.String : [Swift.String]]? = nil, displayName: Swift.String = "", hostname: Swift.String? = nil, cloudID: Swift.Int = -1, selected: Swift.Bool = false, isMoved: Swift.Bool = false, isJustconnectedNOw: Swift.Bool = false, isIoT: Swift.Bool = false, isNew: Swift.Bool = false, isParentalControlEnabled: Swift.Bool = false, _isOffline: Swift.Bool? = nil, is_online: Swift.Bool? = nil, isOffline: Swift.Bool = true, icon_url: Swift.String = "")
+  public var id: Swift.String {
+    get
+  }
+  public var iotdevice_id: Swift.Int?
+  public var device_mac: Swift.String?
+  public var iot_type: Swift.Int?
+  public var iot_type_uuid: Swift.String?
+  public var device_type_uuid: Swift.String?
+  public var parental_control: Swift.Bool?
+  public var management_app_installed: Swift.Bool?
+  public var device_type: Swift.Int?
+  public var deviceType: SmartScannerSDK.DeviceType
+  public var last_seen: Swift.Double?
+  public var mac: Swift.String!
+  public var signalStrength: Swift.Int
+  public var networkInterface: SmartScannerSDK.NetworkInterface
+  public var ip: Swift.String
+  public var ipv6S: [Swift.String]?
+  public var zoneName: Swift.String
+  public var deviceModel: Swift.String?
+  public var deviceSubModel: Swift.String?
+  public var vendor: Swift.String?
+  public var type: Swift.String?
+  public var product: Swift.String?
+  public var os: Swift.String?
+  public var ownersName: Swift.String
+  public var user_id: Swift.Int?
+  public var deviceIsSecuired: Swift.Bool
+  public var conn_type: Swift.Int?
+  public var device_type_id: Swift.Int?
+  public var av_enforce: Swift.Int
+  public var endpoint_installed: Swift.Bool?
+  public var anti_virus: Swift.Bool?
+  public var ep_capabilities: [Swift.String]?
+  public var software: [Swift.String : [Swift.String]]?
+  public var displayName: Swift.String
+  public var hostname: Swift.String?
+  public var cloudID: Swift.Int
+  public var selected: Swift.Bool
+  public var isMoved: Swift.Bool
+  public var isJustconnectedNOw: Swift.Bool
+  public var isIoT: Swift.Bool
+  public var isNew: Swift.Bool
+  public var isParentalControlEnabled: Swift.Bool
+  public var is_online: Swift.Bool?
+  public var isOffline: Swift.Bool
+  public var icon_url: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: SmartScannerSDK.Device, rhs: SmartScannerSDK.Device) -> Swift.Bool
+  public static func IPToInt(_ ip: Swift.String) -> Swift.Int
+  public static func < (lhs: SmartScannerSDK.Device, rhs: SmartScannerSDK.Device) -> Swift.Bool
+  public func getDeviceDetailsDataSource() -> [(Swift.String, Swift.String)]
+  public typealias ID = Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@objc public enum DeviceType : Swift.Int, Swift.Codable, Swift.CaseIterable {
+  case unknown = 0
+  case mobile = 10000
+  case iphone = 10001
+  case android = 10002
+  case appleDevice = 60000
+  case androidDevice = 50000
+  case windowsDevice = 70000
+  case computer = 20000
+  case computerApple = 20001
+  case computerWindows = 20002
+  case computerLinux = 20003
+  case tablet = 30000
+  case tabletApple = 30001
+  case tabletWindows = 30002
+  case tabletAndroid = 30003
+  case iot = 40000
+  case camera = 40001
+  case lightbulb = 40002
+  case xbox = 40003
+  case sonyPlaystation = 40004
+  case streamer = 40005
+  case tvAndroid = 40006
+  case tvApple = 40007
+  case tv_samsung = 40700
+  case tv_sony = 40701
+  case printer = 40008
+  case printer_cannon = 40100
+  case printer_hp = 40101
+  case voip = 40010
+  case speakers = 40011
+  case ups = 40012
+  case repeater = 40013
+  case airConditioner = 40014
+  case nas = 40015
+  case doorlock = 40016
+  case motionDetector = 40017
+  case smokeDetector = 40018
+  case bezeqPiper = 40020
+  case bezeqRepeater = 40021
+  case iRobot = 40022
+  case smartWatch = 40023
+  case appleWatch = 40024
+  case amazonAlexa = 40025
+  case googleHome = 40026
+  case amazon_dot = 40027
+  case chromcast = 40030
+  case kindle = 40300
+  case laptop_dell = 21000
+  case laptop_hp = 21001
+  case laptopApple = 21002
+  case gameConsole = 40040
+  case smartHomeHub = 8000
+  case smartBoiler = 40061
+  case smartSwitch = 40060
+  case doorbell = 40062
+  case smartPlug = 40063
+  case smartSocket = 40064
+  case babyMonitor = 40065
+  case googleHomeMini = 40066
+  case googleHomeMax = 400067
+  case raspberryPi = 40070
+  case BoseSpeakers = 40071
+  case Medical = 40072
+  case SolarPanel = 40073
+  case StreamerTelenet = 40074
+  case smartCar = 40075
+  case gps = 40076
+  case smartBicycle = 40077
+  case firewall = 40078
+  case smartScooter = 40079
+  case Wii = 40080
+  case Nintendo = 40081
+  case VMWARE = 40082
+  case Motorola = 40083
+  case SmartWeatherStation = 40084
+  case cannon = 90000
+  case dell = 90100
+  case google = 90200
+  case hp = 90300
+  case lg = 90400
+  case nest = 90500
+  case philips = 90600
+  case sonos = 90700
+  case sony = 90800
+  case xiaomi = 90900
+  case samsung = 91000
+  case huawei = 91100
+  case Amazon = 91200
+  case Arduino = 91300
+  case other = 10026
+  case mmm = 40090
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [SmartScannerSDK.DeviceType]
+  public typealias RawValue = Swift.Int
+  public static var allCases: [SmartScannerSDK.DeviceType] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum NetworkInterface : Swift.Int, Swift.Codable {
+  case unknown = 0
+  case wireless_24G = 1
+  case wireless_5G = 2
+  case ethernet = 3
+  case dect = 4
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum ServerEnvironment : Swift.String {
+  case demo
+  case staging
+  case development
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objcMembers open class BaseEnvironment {
+  public var environment: SmartScannerSDK.ServerEnvironment
+  @objc deinit
+}
+extension Swift.UInt32 {
+  public func IPv4String() -> Swift.String
+}
+public enum PublisherState {
+  case sending
+  case finished
+  public static func == (a: SmartScannerSDK.PublisherState, b: SmartScannerSDK.PublisherState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public class UniqPassthroughSubject<Output, Failure> where Output : Swift.Equatable, Failure : Swift.Error {
+  final public func send(_ value: Output, _ state: SmartScannerSDK.PublisherState)
+  @objc deinit
+}
+public class ScanResult : Swift.Codable {
+  final public let date: Foundation.Date
+  final public let wifiName: Swift.String?
+  final public let total: Swift.Int?
+  final public let identified: Swift.Int?
+  final public let devices: [SmartScannerSDK.Device]?
+  final public let ipv4: Swift.String
+  final public let gateway: Swift.String
+  public init(date: Foundation.Date, wifiName: Swift.String, total: Swift.Int, identified: Swift.Int, devices: [SmartScannerSDK.Device], ip: Swift.String, gateway: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public protocol SamAPIProtocol {
+  func httpMethodType() -> SmartScannerSDK.HTTPMethodType
+  func apiBasePath() -> Swift.String
+  func apiEndPath() -> Swift.String
+}
+public protocol SamAPIModelType {
+  var api: SmartScannerSDK.SamAPIProtocol { get set }
+  var parameters: [Swift.String : Any]? { get set }
+  var getParameters: [Swift.String : Swift.String]? { get set }
+  var bodyData: Foundation.Data? { get set }
+}
+public enum SamNetworkError : Swift.Error, Swift.Equatable {
+  case none
+  case unknown
+  case serverError
+  case unauthorized
+  case notModified
+  case notFound
+  case parsingError
+  case urlConfigurationError
+  case nodDeivceId
+  public var description: (code: Swift.Int, description: Swift.String) {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: SmartScannerSDK.SamNetworkError, b: SmartScannerSDK.SamNetworkError) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct SamRequestConfiguration {
+}
+public enum NetworkUtils {
+  public static func networkConnections() -> SmartScannerSDK.ConnectionType
+}
+public enum SSID {
+  public static func fetchNetworkInfo() -> [SmartScannerSDK.NetworkInfo]?
+}
+public struct NetworkInfo {
+  public var interface: Swift.String
+  public var success: Swift.Bool
+  public var ssid: Swift.String?
+  public var bssid: Swift.String?
+}
+public struct TargetDevice : Swift.Hashable {
+  public var id: Swift.Int
+  public var mac: Swift.String
+  public var ip: Swift.String?
+  public var timeStemp: Swift.Double?
+  public var TTL: Swift.Int32
+  public static func == (lhs: SmartScannerSDK.TargetDevice, rhs: SmartScannerSDK.TargetDevice) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension UIKit.UIDevice {
+  @_Concurrency.MainActor(unsafe) public var type: Swift.String {
+    get
+  }
+}
+public enum Utilities {
+}
+open class Dtype : Swift.Codable {
+  public init(mac: Swift.String? = nil, icon_id: SmartScannerSDK.DeviceType = DeviceType.unknown, name: Swift.String? = nil, device_type_id: Swift.Int? = nil, isSelcted: Swift.Bool? = false)
+  open var mac: Swift.String?
+  open var icon_type: SmartScannerSDK.DeviceType
+  open var icon_id: Swift.Int?
+  open var name: Swift.String?
+  open var device_type_id: Swift.Int?
+  open var isSelcted: Swift.Bool?
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+  open func encode(to encoder: Swift.Encoder) throws
+}
+public enum SamScannerType : Swift.String, Swift.CaseIterable {
+  case PING
+  case BANNER_GRABBING
+  case MDNS
+  case SSDP
+  case MDNS_HOSTNAME
+  case DNS_HOSTNAME
+  case NET_BIOS
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [SmartScannerSDK.SamScannerType]
+  public typealias RawValue = Swift.String
+  public static var allCases: [SmartScannerSDK.SamScannerType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum HTTPMethodType : Swift.String {
+  case get
+  case post
+  case put
+  case patch
+  case delete
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension SmartScannerSDK.SamSDKError : Swift.Hashable {}
+extension SmartScannerSDK.ConnectionType : Swift.Equatable {}
+extension SmartScannerSDK.ConnectionType : Swift.Hashable {}
+extension SmartScannerSDK.DeviceType : Swift.Equatable {}
+extension SmartScannerSDK.DeviceType : Swift.Hashable {}
+extension SmartScannerSDK.DeviceType : Swift.RawRepresentable {}
+extension SmartScannerSDK.NetworkInterface : Swift.Equatable {}
+extension SmartScannerSDK.NetworkInterface : Swift.Hashable {}
+extension SmartScannerSDK.NetworkInterface : Swift.RawRepresentable {}
+extension SmartScannerSDK.ServerEnvironment : Swift.Equatable {}
+extension SmartScannerSDK.ServerEnvironment : Swift.Hashable {}
+extension SmartScannerSDK.ServerEnvironment : Swift.RawRepresentable {}
+extension SmartScannerSDK.PublisherState : Swift.Equatable {}
+extension SmartScannerSDK.PublisherState : Swift.Hashable {}
+extension SmartScannerSDK.SamNetworkError : Swift.Hashable {}
+extension SmartScannerSDK.SamScannerType : Swift.Equatable {}
+extension SmartScannerSDK.SamScannerType : Swift.Hashable {}
+extension SmartScannerSDK.SamScannerType : Swift.RawRepresentable {}
+extension SmartScannerSDK.HTTPMethodType : Swift.Equatable {}
+extension SmartScannerSDK.HTTPMethodType : Swift.Hashable {}
+extension SmartScannerSDK.HTTPMethodType : Swift.RawRepresentable {}

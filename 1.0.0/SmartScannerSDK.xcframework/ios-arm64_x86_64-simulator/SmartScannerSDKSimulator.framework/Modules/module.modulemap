@@ -1,0 +1,16 @@
+framework module SmartScannerSDKSimulator {
+   umbrella header "SmartScannerSDK.h"
+   export *
+   module * { export * }
+   
+   explicit module SmartScanner {
+     header "Lib.h"
+     link "SmartScanner"
+     export *
+  }
+}
+
+module SmartScannerSDKSimulator.Swift {
+  header "SmartScannerSDKSimulator-Swift.h"
+  requires objc
+}
