@@ -31,7 +31,7 @@
 
 The `SmartScannerSDK` library requires iOS 14.0 or later and Swift 5.0 or later.
 
-**Note**: Apple platforms other than iOS are not currently supported.
+>**Note** Apple platforms other than iOS are not currently supported.
 
 ### Swift Package Manager
 
@@ -48,7 +48,7 @@ dependencies: [
 ]
 ```
 
-## Manually
+### Manually
 
 If you prefer not to use dependency managers, you can integrate the `SmartScannerSDSK` into your project manually.
 
@@ -79,7 +79,7 @@ import SmartScannerSDK
 
 This will ensure to import the simulator variation of the library when the Xcode target device is an iOS simulator.
 
->**NOTE**: The simulator variation will compile and run, but the scanner will not work on the iPhone simulator in any way
+>**Note** The simulator variation will compile and run, but the scanner will not work on the iPhone simulator in any way.
 
 ### Setup and authentication
 
@@ -203,7 +203,7 @@ scanner.killScan()
 
 The `scan` method call site accepts a `ScanConfig` object. The `ScanConfig` object allows the SDK client to control some of the scanner's configurations. For example, the following code snippet starts a scan that is using only `PING` to detect devices in the network and sets the scan to last only 2 minutes.
 
->**Note** that the default configurations are considered to be optimized for best scan results.
+>**Note** The default configurations are considered to be optimized for best scan results.
 
 ```swift
 let config = ScanConfig(
@@ -235,7 +235,7 @@ enum SamScannerType {
 
 The errors received from the scanner are defined in the following enum and can be accessed when an error is received in the scan result.
 
->**Note** that every error case contains a description tuple that contains the error code, description and title.
+>**Note** Every error case contains a description tuple that contains the error code, description and title.
 
 ```swift
 enum SamSDKError: Error {
