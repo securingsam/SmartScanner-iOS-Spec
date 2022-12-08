@@ -4,7 +4,6 @@ import PackageDescription
 let package = Package(
     name: "SmartScannerSDK",
     platforms: [.iOS(.v14)],
-    swiftLanguageVersions: [.v5],
     products: [
         .library(
             name: "SmartScannerSDK",
