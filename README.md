@@ -1,7 +1,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://securingsam.com/wp-content/uploads/2022/01/logosam_white.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://securingsam.com/wp-content/uploads/2021/12/logosam_colour.svg">
-  <img alt="SAM Seamless Network" src="https://securingsam.com/wp-content/uploads/2022/01/logosam_white.svg" width="190px" style="display: block; margin: 1.5rem 0;">
+  <img alt="SAM Seamless Network" src="https://securingsam.com/wp-content/uploads/2022/01/logosam_white.svg" width="190px" style="display: block; margin: 2rem 0 1.5rem 0;">
 </picture>
 
 # SmartScanner SDK - Developer Documentation
@@ -23,7 +23,6 @@
         - [Stopping the scan process](#stopping-the-scan-process)
         - [Custom scanner configurations](#custom-scanner-configurations)
         - [Error handling](#error-handling)
-- [API reference](#api-reference)
 
 ---
 
