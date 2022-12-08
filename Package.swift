@@ -13,7 +13,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "SmartScannerSDK",
-            path: "1.0.0/SmartScannerSDK.xcframework"
+            path: "SmartScannerSDK.xcframework"
         )
     ]
 )
