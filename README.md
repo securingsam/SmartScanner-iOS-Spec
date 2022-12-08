@@ -11,16 +11,18 @@
     - [Swift Package Manager](#swift-package-manager)
     - [Manually](#manually)
 - [Usage](#usage)
-    - [Importing the library](#importing-the-library)
-    - [Setup and authentication](#setup-and-authentication)
-    - [The `Scan` instance](#the-scan-instance)
-    - [Quick scan](#quick-scan)
-    - [The `ScanResult` object](#the-scanresult-object)
-    - [Observing the scanner's progress](#observing-the-scanners-progress)
-    - [Observing detected devices](#observing-detected-devices)
-    - [Stopping the scan process](#stopping-the-scan-process)
-    - [Custom scanner configurations](#custom-scanner-configurations)
-    - [Error handling](#error-handling)
+    - [Setup](#setup)
+        - [Importing the library](#importing-the-library)
+        - [Setup and authentication](#setup-and-authentication)
+    - [The Scanner API](#the-scanner-api)
+        - [The `Scan` instance](#the-scan-instance)
+        - [Quick scan](#quick-scan)
+        - [The `ScanResult` object](#the-scanresult-object)
+        - [Observing the scanner's progress](#observing-the-scanners-progress)
+        - [Observing detected devices](#observing-detected-devices)
+        - [Stopping the scan process](#stopping-the-scan-process)
+        - [Custom scanner configurations](#custom-scanner-configurations)
+        - [Error handling](#error-handling)
 - [API reference](#api-reference)
 
 ---
@@ -58,9 +60,11 @@ Download the [XCFramework](SmartScannerSDK.xcframework) file and copy it to your
 
 ## Usage
 
+## Setup
+
 ### Importing the library
 
-Importing the library in your Swift code is pretty straightforward:
+Importing the library in your Swift code is pretty straightforward
 
 ```swift
 import SmartScannerSDK
@@ -90,6 +94,8 @@ Setting up occur anywhere, as long as it happens before using any of the `SmartS
 ```swift
 SmartScanner.getInstance().setup(token: "yoursamvendortoken")
 ```
+
+## The Scanner API
 
 ### The `Scan` instance
 
