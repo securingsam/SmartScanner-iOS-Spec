@@ -1,0 +1,23 @@
+{
+  "object" : {
+    "artifacts" : [
+      {
+        "packageRef" : {
+          "identity" : "smartscanner-ios-spec",
+          "kind" : "root",
+          "location" : "/Users/erezhod/Developer/Sam/SmartScanner-iOS-Spec",
+          "name" : "SmartScanner-iOS-Spec"
+        },
+        "path" : "/Users/erezhod/Developer/Sam/SmartScanner-iOS-Spec/SmartScannerSDK.xcframework",
+        "source" : {
+          "type" : "local"
+        },
+        "targetName" : "SmartScannerSDK"
+      }
+    ],
+    "dependencies" : [
+
+    ]
+  },
+  "version" : 5
+}

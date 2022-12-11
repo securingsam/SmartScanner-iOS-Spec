@@ -10,6 +10,7 @@
     - [Minimum system sequirements](#minimum-system-requirements)
     - [Swift Package Manager](#swift-package-manager)
     - [Manually](#manually)
+- [API reference](#api-reference)
 - [Usage](#usage)
     - [Setup](#setup)
         - [Importing the library](#importing-the-library)
@@ -17,12 +18,10 @@
     - [The Scanner API](#the-scanner-api)
         - [The `Scan` instance](#the-scan-instance)
         - [Quick scan](#quick-scan)
-        - [The `ScanResult` object](#the-scanresult-object)
         - [Observing the scanner's progress](#observing-the-scanners-progress)
         - [Observing detected devices](#observing-detected-devices)
         - [Stopping the scan process](#stopping-the-scan-process)
         - [Custom scanner configurations](#custom-scanner-configurations)
-        - [Error handling](#error-handling)
 
 ---
 
@@ -57,7 +56,14 @@ Download the [XCFramework](SmartScannerSDK.xcframework) file and copy it to your
 
 ---
 
+## API reference
+
+For a more detailed list of all of the available SDK API methods and types, please refer to the [API reference](API_REFERENCE.md).
+
+---
+
 ## Usage
+
 
 ## Setup
 
@@ -107,7 +113,9 @@ let scanner: Scan = SmartScanner.getInstance().getScanInstance()
 ### Quick scan
 
 In order to start scanning, call the `.scan(params:)` method from the `Scan` instance.
-This method returns a Combine `Publisher` and provides a `ScanResult` object which contains the data that was collected by the scanner.
+This method returns a Combine `AnyPublisher` and provides a `ScanResult` object which contains the data that was collected by the scanner.
+
+For more information, please refer to the [API reference](API_REFERENCE.md).
 
 ```swift
 let config = ScanConfig()
@@ -137,36 +145,10 @@ scanner.scan(params: config)
     .store(in: &cancellables)
 ```
 
-### The `ScanResult` object
-
-This object contains all of the data collected by the scanner after initiating a new scan session.
-
-```swift
-class ScanResult: Codable  {
-    // Scan start time
-    let dateStr: String
-
-    // WiFi SSID if fetched succesfuly
-    let wifiName: String?
-
-    // Total devices found
-    let total: Int?
-
-    // Total devices identified
-    let identified: Int?
-
-    // All detected devices
-    let devices: [Device]?
-
-    // The IP of the devices the scan was started from
-    let ipv4: String
-}
-```
-
 ### Observing the scanner's progress
 
 The `Scan` instances exposes an observer instance called `.observeProgress()` that allows you to observe the progress of the scan (progress is values are ranging 0 - 100).
-The `.observeProgress()` method returns a new Combine `Publisher` with a value of type `Int` that progress values can be read from.
+The `.observeProgress()` method returns a new Combine `AnyPublisher` with a value of type `Int` that progress values can be read from.
 
 ```swift
 scanner
@@ -180,9 +162,11 @@ scanner
 
 ### Observing detected devices
 
-As it might be more suitable to get devices the moment they are detected, The `Scan` instance also exposes an `.observeDevices()` method that returns an array of `RegisteredDevice` items.
+As it might be more suitable to get devices the moment they are detected, The `Scan` instance also exposes an `.observeDevices()` method that returns an array of `Device` items.
 
 This allows you to retrieve a list of detected devices as they are detected.
+
+For more information, please refer to the [API reference](API_REFERENCE.md).
 
 ```swift
 scanner
@@ -221,39 +205,3 @@ scanner.scan(params: config)
     .sink { ... }
     .store(in: &cancellables)
 ```
-
-The available scanner types are defined within the `SamScannerType` enum
-
-```swift
-enum SamScannerType {
-    case PING
-    case BANNER_GRABBING
-    case MDNS
-    case SSDP
-    case MDNS_HOSTNAME
-    case DNS_HOSTNAME
-    case NET_BIOS
-}
-```
-
-### Error handling
-
-The errors received from the scanner are defined in the following enum and can be accessed when an error is received in the scan result.
-
->**Note** Every error case contains a description tuple that contains the error code, description and title.
-
-```swift
-enum SamSDKError: Error {
-    case UNKNOWN
-    case MISSING_WIFI_CONNECTION
-    case LOST_WIFI_CONNECTION
-    case MISSING_LOCATION_PERMISSIONS
-    case SCAN_IS_ALREADY_RUNNING
-    case UNAUTHORIZED
-    case SERVER_ERROR
-
-    var description: (code: Int, description: String, title: String)
-}
-```
-
-## API reference
