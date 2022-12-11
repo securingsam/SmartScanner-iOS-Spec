@@ -154,50 +154,22 @@ Contains information about a detected device.
 
 ```swift
 struct Device: Codable, Comparable, Identifiable {
-    var id: String
-    var iotdevice_id: Int?
-    var device_mac: String?
-    var iot_type: Int?
-    var iot_type_uuid: String?
-    var device_type_uuid: String?
-    var parental_control: Bool?
-    var management_app_installed: Bool?
-    var device_type: Int?
-    var deviceType: SmartScannerSDK.DeviceType
-    var last_seen: Double?
-    var mac: String!
-    var signalStrength: Int
-    var networkInterface: SmartScannerSDK.NetworkInterface
-    var ip: String
-    var ipv6S: [String]?
-    var zoneName: String
+    var deviceId: Int
+    var deviceType: DeviceType
+    var deviceTypeUUID: String?
+    var deviceTypeName: String?
+    var dname: String?
+    var hostname: String?
+    var iconURL: String
+    var ipv4: String
+    var ipv4s: [String]?
+    var mac: String
+    var deviceManufacturer: String?
+    var deviceOS: String?
+    var deviceProduct: String?
+    var deviceClass: String?
     var deviceModel: String?
     var deviceSubModel: String?
-    var vendor: String?
-    var type: String?
-    var product: String?
-    var os: String?
-    var ownersName: String
-    var user_id: Int?
-    var deviceIsSecuired: Bool
-    var conn_type: Int?
-    var device_type_id: Int?
-    var av_enforce: Int
-    var endpoint_installed: Bool?
-    var anti_virus: Bool?
-    var ep_capabilities: [String]?
-    var software: [String : [String]]?
     var displayName: String
-    var hostname: String?
-    var cloudID: Int
-    var selected: Bool
-    var isMoved: Bool
-    var isJustconnectedNOw: Bool
-    var isIoT: Bool
-    var isNew: Bool
-    var isParentalControlEnabled: Bool
-    var is_online: Bool?
-    var isOffline: Bool
-    var icon_url: String
 }
 ```
