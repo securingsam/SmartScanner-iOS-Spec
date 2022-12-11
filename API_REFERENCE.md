@@ -5,6 +5,7 @@
 </picture>
 
 # SmartScanner SDK - API Reference
+## SDK Version 1.0.0
 
 - [setup(token:)](#setuptoken)
 - [scan(params:)](#scanparams)

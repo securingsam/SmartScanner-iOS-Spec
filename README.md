@@ -5,6 +5,7 @@
 </picture>
 
 # SmartScanner SDK - Developer Documentation
+## SDK Version 1.0.0
 
 - [Installation](#installation)
     - [Minimum system sequirements](#minimum-system-requirements)
