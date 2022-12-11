@@ -116,10 +116,8 @@ let scanner: Scan = SmartScanner.getInstance().getScanInstance()
 
 ### Quick scan
 
-In order to start scanning, call the `.scan(params:)` method from the `Scan` instance.
-This method returns a Combine `AnyPublisher` and provides a `ScanResult` object which contains the data that was collected by the scanner.
-
-For more information, please refer to the [API reference](API_REFERENCE.md#device).
+In order to start scanning, call the [`.scan(params:)`](API_REFERENCE.md#scanparams) method from the `Scan` instance.
+This method returns a Combine `AnyPublisher` and provides a [`ScanResult`](API_REFERENCE.md#scanresult) object which contains the data that was collected by the scanner.
 
 ```swift
 let config = ScanConfig()
@@ -151,8 +149,8 @@ scanner.scan(params: config)
 
 ### Observing the scanner's progress
 
-The `Scan` instances exposes an observer instance called `.observeProgress()` that allows you to observe the progress of the scan (progress is values are ranging 0 - 100).
-The `.observeProgress()` method returns a new Combine `AnyPublisher` with a value of type `Int` that progress values can be read from.
+The `Scan` instances exposes an observer instance called [`.observeProgress()`](API_REFERENCE.md#observeprogress) that allows you to observe the progress of the scan (progress is values are ranging 0 - 100).
+The [`.observeProgress()`](API_REFERENCE.md#observeprogress) method returns a new Combine `AnyPublisher` with a value of type `Int` that progress values can be read from.
 
 ```swift
 scanner
@@ -166,11 +164,9 @@ scanner
 
 ### Observing detected devices
 
-As it might be more suitable to get devices the moment they are detected, The `Scan` instance also exposes an `.observeDevices()` method that returns an array of `Device` items.
+As it might be more suitable to get devices the moment they are detected, The `Scan` instance also exposes an [`.observeDevices()`](API_REFERENCE.md#observedevices) method that returns an array of [`Device`](API_REFERENCE.md#device) items.
 
 This allows you to retrieve a list of detected devices as they are detected.
-
-For more information, please refer to the [API reference](API_REFERENCE.md).
 
 ```swift
 scanner
@@ -186,7 +182,7 @@ scanner
 
 ### Stopping the scan process
 
-In order to stop the currently active scan, you can use the `.killScan()` method built into the `Scan` instance.
+In order to stop the currently active scan, you can use the [`.killScan()`](API_REFERENCE.md#killscan) method built into the `Scan` instance.
 
 ```swift
 scanner.killScan()
@@ -194,7 +190,11 @@ scanner.killScan()
 
 ### Custom scanner configurations
 
-The `scan` method call site accepts a `ScanConfig` object. The `ScanConfig` object allows the SDK client to control some of the scanner's configurations. For example, the following code snippet starts a scan that is using only `PING` to detect devices in the network and sets the scan to last only 2 minutes.
+The `scan` method call site accepts a [`ScanConfig`](API_REFERENCE.md#scanconfig) object.
+
+The [`ScanConfig`](API_REFERENCE.md#scanconfig) object allows the SDK client to control some of the scanner's configurations. For example, the following code snippet starts a scan that is using only `PING` to detect devices in the network and sets the scan to last only 2 minutes.
+
+All scanner types can be found within the [`SamScannerType`](API_REFERENCE.md#samscannertype) enum.
 
 >**Note** The default configurations are considered to be optimized for best scan results.
 
