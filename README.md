@@ -119,7 +119,7 @@ let scanner: Scan = SmartScanner.getInstance().getScanInstance()
 In order to start scanning, call the `.scan(params:)` method from the `Scan` instance.
 This method returns a Combine `AnyPublisher` and provides a `ScanResult` object which contains the data that was collected by the scanner.
 
-For more information, please refer to the [API reference](API_REFERENCE.md).
+For more information, please refer to the [API reference](API_REFERENCE.md#device).
 
 ```swift
 let config = ScanConfig()

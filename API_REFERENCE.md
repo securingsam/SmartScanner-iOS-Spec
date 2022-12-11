@@ -153,7 +153,7 @@ enum SamSDKError: Error {
 Contains information about a detected device.
 
 ```swift
-struct Device: Codable. Comparable, Identifiable {
+struct Device: Codable, Comparable, Identifiable {
     var id: String
     var iotdevice_id: Int?
     var device_mac: String?
