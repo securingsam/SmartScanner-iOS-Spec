@@ -12,7 +12,7 @@
     - [Manually](#manually)
 - [API reference](#api-reference)
 - [Usage](#usage)
-    - [Example]()
+    - [Example](#example)
     - [Setup](#setup)
         - [Importing the library](#importing-the-library)
         - [Setup and authentication](#setup-and-authentication)
