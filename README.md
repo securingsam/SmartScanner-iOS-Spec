@@ -12,6 +12,7 @@
     - [Manually](#manually)
 - [API reference](#api-reference)
 - [Usage](#usage)
+    - [Example]()
     - [Setup](#setup)
         - [Importing the library](#importing-the-library)
         - [Setup and authentication](#setup-and-authentication)
@@ -64,6 +65,9 @@ For a more detailed list of all of the available SDK API methods and types, plea
 
 ## Usage
 
+## Example
+
+A full example `ViewModel` class file can be found [here](ScannerViewModelExample.swift).
 
 ## Setup
 
