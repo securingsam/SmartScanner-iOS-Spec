@@ -1,7 +1,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://securingsam.com/wp-content/uploads/2022/01/logosam_white.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://securingsam.com/wp-content/uploads/2021/12/logosam_colour.svg">
-  <img alt="SAM Seamless Network" src="https://securingsam.com/wp-content/uploads/2022/01/logosam_white.svg" width="190px" style="display: block; margin: 2rem 0 1.5rem 0;">
+  <img alt="SAM Seamless Network" src="https://securingsam.com/wp-content/uploads/2021/12/logosam_colour.svg" width="190px" style="display: block; margin: 2rem 0 1.5rem 0;">
 </picture>
 
 # SmartScanner SDK - Developer Documentation
@@ -27,14 +27,17 @@
 
 ---
 
+<a id="installation"></a>
 ## Installation
 
+<a id="minimum-system-requirements"></a>
 ### Minimum system requirements
 
 The `SmartScannerSDK` library requires iOS 14.0 or later and Swift 5.0 or later.
 
 >**Note** Apple platforms other than iOS are not currently supported.
 
+<a id="swift-package-manager"></a>
 ### Swift Package Manager
 
 The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
@@ -50,6 +53,7 @@ dependencies: [
 ]
 ```
 
+<a id="manually"></a>
 ### Manually
 
 If you prefer not to use dependency managers, you can integrate the `SmartScannerSDSK` into your project manually.
@@ -58,20 +62,25 @@ Download the [XCFramework](SmartScannerSDK.xcframework) file and copy it to your
 
 ---
 
+<a id="api-reference"></a>
 ## API reference
 
 For a more detailed list of all of the available SDK API methods and types, please refer to the [API reference](API_REFERENCE.md).
 
 ---
 
+<a id="usage"></a>
 ## Usage
 
+<a id="example"></a>
 ## Example
 
 A full example `ViewModel` class file can be found [here](ScannerViewModelExample.swift).
 
+<a id="setup"></a>
 ## Setup
 
+<a id="importing-the-library"></a>
 ### Importing the library
 
 Importing the library in your Swift code is pretty straightforward
@@ -95,6 +104,7 @@ This will ensure to import the simulator variation of the library when the Xcode
 
 >**Note** The simulator variation will compile and run, but the scanner will not work on the iPhone simulator in any way.
 
+<a id="setup-and-authentication"></a>
 ### Setup and authentication
 
 The `SmartScannerSDK` library requires a SAM vendor authentication token in order to verify your identity.
@@ -105,8 +115,10 @@ Setting up occur anywhere, as long as it happens before using any of the `SmartS
 SmartScanner.getInstance().setup(token: "yoursamvendortoken")
 ```
 
+<a id="the-scanner-api"></a>
 ## The Scanner API
 
+<a id="the-scan-instance"></a>
 ### The `Scan` instance
 
 The `Scan` instance is used in order to communicate with the `SmartScannerSDK`.
@@ -115,6 +127,7 @@ The `Scan` instance is used in order to communicate with the `SmartScannerSDK`.
 let scanner: Scan = SmartScanner.getInstance().getScanInstance()
 ```
 
+<a id="quick-scan"></a>
 ### Quick scan
 
 In order to start scanning, call the [`.scan(params:)`](API_REFERENCE.md#scanparams) method from the `Scan` instance.
@@ -148,6 +161,7 @@ scanner.scan(params: config)
     .store(in: &cancellables)
 ```
 
+<a id="observing-the-scanners-progress"></a>
 ### Observing the scanner's progress
 
 The `Scan` instances exposes an observer instance called [`.observeProgress()`](API_REFERENCE.md#observeprogress) that allows you to observe the progress of the scan (progress is values are ranging 0 - 100).
@@ -163,6 +177,7 @@ scanner
     .store(in: &cancellables)
 ```
 
+<a id="observing-detected-devices"></a>
 ### Observing detected devices
 
 As it might be more suitable to get devices the moment they are detected, The `Scan` instance also exposes an [`.observeDevices()`](API_REFERENCE.md#observedevices) method that returns an array of [`Device`](API_REFERENCE.md#device) items.
@@ -181,6 +196,7 @@ scanner
     .store(in: &cancellables)
 ```
 
+<a id="stopping-the-scan-process"></a>
 ### Stopping the scan process
 
 In order to stop the currently active scan, you can use the [`.killScan()`](API_REFERENCE.md#killscan) method built into the `Scan` instance.
@@ -189,6 +205,7 @@ In order to stop the currently active scan, you can use the [`.killScan()`](API_
 scanner.killScan()
 ```
 
+<a id="custom-scanner-configurations"></a>
 ### Custom scanner configurations
 
 The `scan` method call site accepts a [`ScanConfig`](API_REFERENCE.md#scanconfig) object.

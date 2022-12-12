@@ -1,7 +1,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://securingsam.com/wp-content/uploads/2022/01/logosam_white.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://securingsam.com/wp-content/uploads/2021/12/logosam_colour.svg">
-  <img alt="SAM Seamless Network" src="https://securingsam.com/wp-content/uploads/2022/01/logosam_white.svg" width="190px" style="display: block; margin: 2rem 0 1.5rem 0;">
+  <img alt="SAM Seamless Network" src="https://securingsam.com/wp-content/uploads/2021/12/logosam_colour.svg" width="190px" style="display: block; margin: 2rem 0 1.5rem 0;">
 </picture>
 
 # SmartScanner SDK - API Reference
@@ -20,6 +20,7 @@
 
 ---
 
+<a id="setuptoken"></a>
 ## `setup(token:)`
 
 Setup and authenticate with the `SmartScannerSDK`.
@@ -32,6 +33,7 @@ Setup and authenticate with the `SmartScannerSDK`.
 SmartScanner.getInstance().setup(token: "yoursamvendortoken")
 ```
 
+<a id="scanparams"></a>
 ## `scan(params:)`
 
 Starts a scanning process.
@@ -44,6 +46,7 @@ Starts a scanning process.
 SmartScanner.getInstance().getScanInstance().scan(params: ScanConfig())
 ```
 
+<a id="observeprogress"></a>
 ## `observeProgress()`
 
 Observes the scanner's progress (0-100%).
@@ -54,6 +57,7 @@ Observes the scanner's progress (0-100%).
 SmartScanner.getInstance().getScanInstance().observeProgress()
 ```
 
+<a id="observedevices"></a>
 ## `observeDevices()`
 
 Observes incoming detected devices.
@@ -64,6 +68,7 @@ Observes incoming detected devices.
 SmartScanner.getInstance().getScanInstance().observeDevices()
 ```
 
+<a id="killscan"></a>
 ## `killScan()`
 
 Stops the current running scan process.
@@ -74,6 +79,7 @@ Stops the current running scan process.
 SmartScanner.getInstance().getScanInstance().killScan()
 ```
 
+<a id="scanconfigallowedscannertypes-scantimeinseconds"></a>
 ## `ScanConfig(allowedScannerTypes?, scanTimeInSeconds?)`
 
 Provides custom scanner configuration for the `Scan` instance.
@@ -87,6 +93,7 @@ Provides custom scanner configuration for the `Scan` instance.
 ```swift
  ScanConfig(allowedScannerTypes: [.PING], scanTimeInSeconds: 2000)
 ```
+<a id="scanresult"></a>
 ## `ScanResult()`
 
 This object contains all of the data collected by the scanner after initiating a new scan session.
@@ -113,6 +120,7 @@ class ScanResult: Codable  {
 }
 ```
 
+<a id="samscannertype"></a>
 ## `SamScannerType`
 
 The available scanner types.
@@ -129,6 +137,7 @@ enum SamScannerType {
 }
 ```
 
+<a id="samsdkerror"></a>
 ## `SamSDKError`
 
 The errors received from the scanner are defined in the following enum and can be accessed when an error is received in the scan result.
@@ -149,6 +158,7 @@ enum SamSDKError: Error {
 }
 ```
 
+<a id="device"></a>
 ## `Device`
 
 Contains information about a detected device.
