@@ -24,6 +24,7 @@
         - [Observing detected devices](#observing-detected-devices)
         - [Stopping the scan process](#stopping-the-scan-process)
         - [Custom scanner configurations](#custom-scanner-configurations)
+        - [Handling 401 unauthorized errors](#handling-401-unauthorized-errors)
 
 ---
 
@@ -226,4 +227,54 @@ scanner.scan(params: config)
     .receive(on: RunLoop.main)
     .sink { ... }
     .store(in: &cancellables)
+```
+
+<a id="handling-401-unauthorized-errors"></a>
+### Handling 401 Unauthorized errors
+
+In case the authentication token provided in Initialization and authentication phase is expired during the scan process, the scan process will automatically stop and return a [`SamSDKError`](API_REFERENCE.md#samsdkerror) instance with code of `.UNAUTHORIZED` (401).
+
+In that scenario a new/refreshed token must be provided to the SDK by executing the [`.setup(token:)`](API_REFERENCE.md#setuptoken) function again.
+
+```swift
+func startScan() {
+    let config = ScanConfig()
+
+    scanner.scan(params: config)
+        .receive(on: RunLoop.main)
+        .sink { [weak self] completion in
+            switch completion {
+            case .finished:
+                print("Finished!")
+            case .failure(let error):
+                /// Treat an `.UNAUTHORIZED` type error
+                if error == .UNAUTHORIZED {
+                    self?.handle401UnauthorizedErrorAndRescan()
+                    return
+                }
+                print(error.description)
+            }
+        } receiveValue: { result in
+            // On success, print the list of deteceted devices
+            guard
+                let result,
+                let devices = result.devices
+            else {
+                print("No devices found")
+                return
+            }
+
+            print("Devices: \(devices)")
+        }
+        .store(in: &cancellables)
+}
+
+private func handle401UnauthorizedErrorAndRescan() {
+    setupScanner(token: refreshToken())
+    startScan()
+}
+
+private func refreshToken() -> String {
+    // Refresh the token and return a new valid one
+}
 ```

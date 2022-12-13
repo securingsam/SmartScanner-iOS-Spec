@@ -15,31 +15,32 @@ import SmartScannerSDK
 #endif
 
 final class ScannerViewModelExample: ObservableObject {
-    @Published var isLoading = false
     private let scanner: Scan
     private var cancellables = Set<AnyCancellable>()
 
     init() {
-        /// Setup & authentication
-        SmartScanner.getInstance().setup(token: "yoursamvendortoken")
-
-        /// Creating simpler reference to the `Scan` instance
         self.scanner = SmartScanner.getInstance().getScanInstance()
     }
 
-    func startScan() {
-        isLoading = true
+    func setupScanner(token: String) {
+        SmartScanner.getInstance().setup(token: token)
+    }
 
+    func startScan() {
         let config = ScanConfig()
 
         scanner.scan(params: config)
             .receive(on: RunLoop.main)
-            .sink { completion in
+            .sink { [weak self] completion in
                 switch completion {
                 case .finished:
                     print("Finished!")
                 case .failure(let error):
-                    // Scan process failed. Print the error
+                    /// Treat an `.UNAUTHORIZED` type error
+                    if error == .UNAUTHORIZED {
+                        self?.handle401UnauthorizedErrorAndRescan()
+                        return
+                    }
                     print(error.description)
                 }
             } receiveValue: { result in
@@ -81,6 +82,15 @@ final class ScannerViewModelExample: ObservableObject {
 
     func stopScan() {
         scanner.killScan()
+    }
+
+    private func handle401UnauthorizedErrorAndRescan() {
+        setupScanner(token: refreshToken())
+        startScan()
+    }
+
+    private func refreshToken() -> String {
+        // Refresh the token and return a new valid one
     }
 }
 
