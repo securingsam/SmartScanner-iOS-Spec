@@ -8,7 +8,7 @@
 ## SDK Version 1.0.0
 
 - [Installation](#installation)
-    - [Minimum system sequirements](#minimum-system-requirements)
+    - [Minimum system requirements](#minimum-system-requirements)
     - [Swift Package Manager](#swift-package-manager)
     - [Manually](#manually)
 - [API reference](#api-reference)
