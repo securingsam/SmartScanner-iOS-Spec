@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SmartScannerSDKSimulator
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import SystemConfiguration.CaptiveNetwork
@@ -170,70 +170,6 @@ public enum ConnectionType {
     get
   }
 }
-public class SamRequestRepository : SmartScannerSDKSimulator.SamRequestRepositoryProtocol {
-  public init()
-  public func request<T>(_ apiModel: SmartScannerSDKSimulator.SamAPIModelType, replacementForHeader: [Swift.String : Swift.String]?, completion: @escaping (Swift.Result<T, SmartScannerSDKSimulator.SamNetworkError>) -> Swift.Void) where T : Swift.Decodable, T : Swift.Encodable
-  public func request(_ apiModel: SmartScannerSDKSimulator.SamAPIModelType, replacementForHeader: [Swift.String : Swift.String]?, completion: @escaping (Swift.Result<Foundation.Data, SmartScannerSDKSimulator.SamNetworkError>) -> Swift.Void)
-  public func request(_ apiModel: SmartScannerSDKSimulator.SamAPIModelType, replacementForHeader: [Swift.String : Swift.String]?, completion: @escaping (Swift.Result<Swift.Bool, SmartScannerSDKSimulator.SamNetworkError>) -> Swift.Void)
-  @objc deinit
-}
-public struct Device : Swift.Codable, Swift.Comparable, Swift.Identifiable {
-  public init(device_type_uuid: Swift.String? = nil, parental_control: Swift.Bool? = nil, management_app_installed: Swift.Bool? = nil, device_type: Swift.Int? = nil, deviceType: SmartScannerSDKSimulator.DeviceType = DeviceType.unknown, last_seen: Swift.Double? = nil, mac: Swift.String? = nil, signalStrength: Swift.Int = 0, networkInterface: SmartScannerSDKSimulator.NetworkInterface = NetworkInterface.unknown, ip: Swift.String = "", ipv6S: [Swift.String]? = nil, zoneName: Swift.String = "", deviceModel: Swift.String? = nil, deviceSubModel: Swift.String? = nil, vendor: Swift.String? = nil, type: Swift.String? = nil, product: Swift.String? = nil, os: Swift.String? = nil, ownersName: Swift.String = "", user_id: Swift.Int? = nil, deviceIsSecuired: Swift.Bool = true, conn_type: Swift.Int? = nil, device_type_id: Swift.Int? = nil, av_enforce: Swift.Int = 1, endpoint_installed: Swift.Bool? = nil, anti_virus: Swift.Bool? = nil, ep_capabilities: [Swift.String]? = nil, software: [Swift.String : [Swift.String]]? = nil, displayName: Swift.String = "", hostname: Swift.String? = nil, cloudID: Swift.Int = -1, selected: Swift.Bool = false, isMoved: Swift.Bool = false, isJustconnectedNOw: Swift.Bool = false, isIoT: Swift.Bool = false, isNew: Swift.Bool = false, isParentalControlEnabled: Swift.Bool = false, _isOffline: Swift.Bool? = nil, is_online: Swift.Bool? = nil, isOffline: Swift.Bool = true, icon_url: Swift.String = "")
-  public var id: Swift.String {
-    get
-  }
-  public var iotdevice_id: Swift.Int?
-  public var device_mac: Swift.String?
-  public var iot_type: Swift.Int?
-  public var iot_type_uuid: Swift.String?
-  public var device_type_uuid: Swift.String?
-  public var parental_control: Swift.Bool?
-  public var management_app_installed: Swift.Bool?
-  public var device_type: Swift.Int?
-  public var deviceType: SmartScannerSDKSimulator.DeviceType
-  public var last_seen: Swift.Double?
-  public var mac: Swift.String!
-  public var signalStrength: Swift.Int
-  public var networkInterface: SmartScannerSDKSimulator.NetworkInterface
-  public var ip: Swift.String
-  public var ipv6S: [Swift.String]?
-  public var zoneName: Swift.String
-  public var deviceModel: Swift.String?
-  public var deviceSubModel: Swift.String?
-  public var vendor: Swift.String?
-  public var type: Swift.String?
-  public var product: Swift.String?
-  public var os: Swift.String?
-  public var ownersName: Swift.String
-  public var user_id: Swift.Int?
-  public var deviceIsSecuired: Swift.Bool
-  public var conn_type: Swift.Int?
-  public var device_type_id: Swift.Int?
-  public var av_enforce: Swift.Int
-  public var endpoint_installed: Swift.Bool?
-  public var anti_virus: Swift.Bool?
-  public var ep_capabilities: [Swift.String]?
-  public var software: [Swift.String : [Swift.String]]?
-  public var displayName: Swift.String
-  public var hostname: Swift.String?
-  public var cloudID: Swift.Int
-  public var selected: Swift.Bool
-  public var isMoved: Swift.Bool
-  public var isJustconnectedNOw: Swift.Bool
-  public var isIoT: Swift.Bool
-  public var isNew: Swift.Bool
-  public var isParentalControlEnabled: Swift.Bool
-  public var is_online: Swift.Bool?
-  public var isOffline: Swift.Bool
-  public var icon_url: Swift.String
-  public init(from decoder: Swift.Decoder) throws
-  public static func == (lhs: SmartScannerSDKSimulator.Device, rhs: SmartScannerSDKSimulator.Device) -> Swift.Bool
-  public static func IPToInt(_ ip: Swift.String) -> Swift.Int
-  public static func < (lhs: SmartScannerSDKSimulator.Device, rhs: SmartScannerSDKSimulator.Device) -> Swift.Bool
-  public func getDeviceDetailsDataSource() -> [(Swift.String, Swift.String)]
-  public typealias ID = Swift.String
-  public func encode(to encoder: Swift.Encoder) throws
-}
 @objc public enum DeviceType : Swift.Int, Swift.Codable, Swift.CaseIterable {
   case unknown = 0
   case mobile = 10000
@@ -336,17 +272,44 @@ public struct Device : Swift.Codable, Swift.Comparable, Swift.Identifiable {
     get
   }
 }
-@objc public enum NetworkInterface : Swift.Int, Swift.Codable {
-  case unknown = 0
-  case wireless_24G = 1
-  case wireless_5G = 2
-  case ethernet = 3
-  case dect = 4
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
+public class SamRequestRepository : SmartScannerSDKSimulator.SamRequestRepositoryProtocol {
+  public init()
+  public func request<T>(_ apiModel: SmartScannerSDKSimulator.SamAPIModelType, replacementForHeader: [Swift.String : Swift.String]?, completion: @escaping (Swift.Result<T, SmartScannerSDKSimulator.SamNetworkError>) -> Swift.Void) where T : Swift.Decodable, T : Swift.Encodable
+  public func request(_ apiModel: SmartScannerSDKSimulator.SamAPIModelType, replacementForHeader: [Swift.String : Swift.String]?, completion: @escaping (Swift.Result<Foundation.Data, SmartScannerSDKSimulator.SamNetworkError>) -> Swift.Void)
+  public func request(_ apiModel: SmartScannerSDKSimulator.SamAPIModelType, replacementForHeader: [Swift.String : Swift.String]?, completion: @escaping (Swift.Result<Swift.Bool, SmartScannerSDKSimulator.SamNetworkError>) -> Swift.Void)
+  @objc deinit
+}
+public struct Device : Swift.Codable, Swift.Comparable, Swift.Identifiable {
+  public var id: Swift.String {
     get
   }
+  public var deviceId: Swift.Int
+  public var deviceType: SmartScannerSDKSimulator.DeviceType
+  public var deviceTypeUUID: Swift.String?
+  public var deviceTypeName: Swift.String?
+  public var dname: Swift.String?
+  public var hostname: Swift.String?
+  public var iconURL: Swift.String
+  public var ipv4: Swift.String
+  public var ipv4s: [Swift.String]?
+  public var mac: Swift.String!
+  public var deviceManufacturer: Swift.String?
+  public var deviceOS: Swift.String?
+  public var deviceProduct: Swift.String?
+  public var deviceClass: Swift.String?
+  public var deviceModel: Swift.String?
+  public var deviceSubModel: Swift.String?
+  public var displayName: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+  public typealias ID = Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension SmartScannerSDKSimulator.Device {
+  public static func == (lhs: SmartScannerSDKSimulator.Device, rhs: SmartScannerSDKSimulator.Device) -> Swift.Bool
+  public static func < (lhs: SmartScannerSDKSimulator.Device, rhs: SmartScannerSDKSimulator.Device) -> Swift.Bool
+}
+extension SmartScannerSDKSimulator.Device {
+  public func getDeviceDetailsDataSource() -> [(Swift.String, Swift.String)]
 }
 public enum ServerEnvironment : Swift.String {
   case demo
@@ -435,6 +398,18 @@ public struct NetworkInfo {
   public var ssid: Swift.String?
   public var bssid: Swift.String?
 }
+@objc public enum NetworkInterface : Swift.Int, Swift.Codable {
+  case unknown = 0
+  case wireless_24G = 1
+  case wireless_5G = 2
+  case ethernet = 3
+  case dect = 4
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 public struct TargetDevice : Swift.Hashable {
   public var id: Swift.Int
   public var mac: Swift.String
@@ -455,12 +430,11 @@ extension UIKit.UIDevice {
 public enum Utilities {
 }
 open class Dtype : Swift.Codable {
-  public init(mac: Swift.String? = nil, icon_id: SmartScannerSDKSimulator.DeviceType = DeviceType.unknown, name: Swift.String? = nil, device_type_id: Swift.Int? = nil, isSelcted: Swift.Bool? = false)
+  public init(mac: Swift.String? = nil, icon_id: SmartScannerSDKSimulator.DeviceType = DeviceType.unknown, name: Swift.String? = nil, isSelcted: Swift.Bool? = false)
   open var mac: Swift.String?
-  open var icon_type: SmartScannerSDKSimulator.DeviceType
-  open var icon_id: Swift.Int?
+  open var iconType: SmartScannerSDKSimulator.DeviceType
+  open var iconId: Swift.Int?
   open var name: Swift.String?
-  open var device_type_id: Swift.Int?
   open var isSelcted: Swift.Bool?
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
@@ -502,15 +476,15 @@ extension SmartScannerSDKSimulator.ConnectionType : Swift.Hashable {}
 extension SmartScannerSDKSimulator.DeviceType : Swift.Equatable {}
 extension SmartScannerSDKSimulator.DeviceType : Swift.Hashable {}
 extension SmartScannerSDKSimulator.DeviceType : Swift.RawRepresentable {}
-extension SmartScannerSDKSimulator.NetworkInterface : Swift.Equatable {}
-extension SmartScannerSDKSimulator.NetworkInterface : Swift.Hashable {}
-extension SmartScannerSDKSimulator.NetworkInterface : Swift.RawRepresentable {}
 extension SmartScannerSDKSimulator.ServerEnvironment : Swift.Equatable {}
 extension SmartScannerSDKSimulator.ServerEnvironment : Swift.Hashable {}
 extension SmartScannerSDKSimulator.ServerEnvironment : Swift.RawRepresentable {}
 extension SmartScannerSDKSimulator.PublisherState : Swift.Equatable {}
 extension SmartScannerSDKSimulator.PublisherState : Swift.Hashable {}
 extension SmartScannerSDKSimulator.SamNetworkError : Swift.Hashable {}
+extension SmartScannerSDKSimulator.NetworkInterface : Swift.Equatable {}
+extension SmartScannerSDKSimulator.NetworkInterface : Swift.Hashable {}
+extension SmartScannerSDKSimulator.NetworkInterface : Swift.RawRepresentable {}
 extension SmartScannerSDKSimulator.SamScannerType : Swift.Equatable {}
 extension SmartScannerSDKSimulator.SamScannerType : Swift.Hashable {}
 extension SmartScannerSDKSimulator.SamScannerType : Swift.RawRepresentable {}

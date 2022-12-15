@@ -58,7 +58,7 @@
 		</data>
 		<key>Headers/SmartScannerSDK-Swift.h</key>
 		<data>
-		CZu1B0RSk8B7CuL/4VbrdBdfagA=
+		4VzAL5D+DDvDupgB/Z5comOPgF8=
 		</data>
 		<key>Headers/SmartScannerSDK.h</key>
 		<data>
@@ -82,27 +82,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		sNtwyP0lEzUa9RaAKTfO3OIJ2so=
+		oG0LGOm3IKNy7VqJH/IrxqNXJ3c=
 		</data>
 		<key>Modules/SmartScannerSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		xwZXIkeKu9jXPfPNN3MP+yhRXmA=
+		ylSA3hwWaRl01s9ZIIwZArE241E=
 		</data>
 		<key>Modules/SmartScannerSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		lZhzUGs5JgKpJcc9/pQE/OwM1L8=
+		ddfwq3GOIcecvFfsMkEXRbJ5o5s=
 		</data>
 		<key>Modules/SmartScannerSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		9f9XNhWw+Q4fMeeRJreZlSIDxSI=
+		j413JBk+e3cbMVqGRQAP0DMyZks=
 		</data>
 		<key>Modules/SmartScannerSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		lZhzUGs5JgKpJcc9/pQE/OwM1L8=
+		ddfwq3GOIcecvFfsMkEXRbJ5o5s=
 		</data>
 		<key>Modules/SmartScannerSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		Ox4e7Sn5gxqhJRdzvm0oXOd6xXo=
+		KcjD+AK8xokm46NuRI8T6Ot8Li8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -206,7 +206,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			g/+7t/Dl9hMreQYFFTod58/X0xJDSc5gGUMFOsd3rTE=
+			3a2UcUqxafTwnCp66frMHzBkFt3jEQoTQZIaLyGmU8w=
 			</data>
 		</dict>
 		<key>Headers/SmartScannerSDK.h</key>
@@ -248,35 +248,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			z8QRZi3a/2A1CGkhvDASDmyqY25A6VXjlOx8UqA7kT0=
+			IHasS4owJWOcsW0BI8dqMlKmJzu9Dm2ZHMrhIWAiaqE=
 			</data>
 		</dict>
 		<key>Modules/SmartScannerSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7ioSQ7m8chbVlVxEsfL+HOclZNc4Jh8TI2MWLm5ghs0=
+			ljQ3XsfxAjhgF83lbNTd/2vJfz6fk/mR6J2DtrTvdVA=
 			</data>
 		</dict>
 		<key>Modules/SmartScannerSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LaXb4Ov1Ez9YL8wY6QCK1mBovrWvmX5sBXnkDSXLI40=
+			HH/HVtck8rcM8htz9nJXf/zGkynFXhrauqVC1NNEvN0=
 			</data>
 		</dict>
 		<key>Modules/SmartScannerSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7ioSQ7m8chbVlVxEsfL+HOclZNc4Jh8TI2MWLm5ghs0=
+			ljQ3XsfxAjhgF83lbNTd/2vJfz6fk/mR6J2DtrTvdVA=
 			</data>
 		</dict>
 		<key>Modules/SmartScannerSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MG51zxu3AGYOdCLeYpizKSSvt/8/Bd1qecD57GmerzY=
+			X32Jy57qf7d76sZATWIsxqU+3aAGy8UU8svQhirWTYY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

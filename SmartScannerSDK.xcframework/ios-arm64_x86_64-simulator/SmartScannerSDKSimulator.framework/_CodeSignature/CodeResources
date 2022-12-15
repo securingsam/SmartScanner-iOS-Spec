@@ -62,7 +62,7 @@
 		</data>
 		<key>Headers/SmartScannerSDKSimulator-Swift.h</key>
 		<data>
-		LILzR1Dt+yePavA6EmMSF5p80FY=
+		SdANwOXWCvvPcUCUuJFHCYWX25s=
 		</data>
 		<key>Headers/errors.h</key>
 		<data>
@@ -82,47 +82,47 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		k7laGGD18Pr/QE+RdORm/drQixk=
+		wcDrwx8xt8oUhjmqiNQtPIcnpf4=
 		</data>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		2hsDVA97yexJnH7V6Lcc+ineT98=
+		zrJ2AbtihtAqMepye0UqnTWWKPg=
 		</data>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		GsXKtuIx2QvqCnhXxOvCUv/zMF8=
+		9Z4F147Ag7wxu3zeOD+EmcXl4kE=
 		</data>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		CZBnp197+KBKME7z49AAcU2Z1PA=
+		HbneYof1Wbiv8VdEZSUSbgJXB9c=
 		</data>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		GsXKtuIx2QvqCnhXxOvCUv/zMF8=
+		9Z4F147Ag7wxu3zeOD+EmcXl4kE=
 		</data>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		hY7Ts8mkbHGr6IND3nzgQnwW7TQ=
+		LCopvLf50CLnYM+n0vL7b8Q6kVg=
 		</data>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		2hsDVA97yexJnH7V6Lcc+ineT98=
+		zrJ2AbtihtAqMepye0UqnTWWKPg=
 		</data>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		6fLMLpUDryv4RUYekQaOuxW13uI=
+		XCX5GQTxy+jxA/bz/Hwws3EhPho=
 		</data>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		8gMx5LC9eG5eQ32GhrWcNGJqz3Q=
+		5C3ZMhUDh0g3ftgS4Jh9R9xtsGo=
 		</data>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		6fLMLpUDryv4RUYekQaOuxW13uI=
+		XCX5GQTxy+jxA/bz/Hwws3EhPho=
 		</data>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Gt273nHGFg/qPOPP1Y/kEugLk+s=
+		GMqCFPvFMbJGPhFDJ1eWg8miYgs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -233,7 +233,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AHPJczrQfJKSEVUe2afhhOjTB3ogXeN7qScZUda2gpo=
+			zwWZtxVU9yN9Pm8FSDklmVY0KFN28y8UFLCuooX6Q1c=
 			</data>
 		</dict>
 		<key>Headers/errors.h</key>
@@ -268,70 +268,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sgSRqkcMDMDh9VvZ9LMQhYsLb8LZ5uDJccuK32VXM4I=
+			kxOqgoB8m6q0TxFP4SrwejxOdIe2orAgVaUiZzM+KlE=
 			</data>
 		</dict>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			E5WSWwJMsiKPWcIoZFb7P3F8j+45NKXxekUdfHQZFJY=
+			CkR5pY3jFGomEZH17mYITlD8Bxkfdf0D8jSv4sosdWc=
 			</data>
 		</dict>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Te5Y4tzBIiuXmi1h+At2gLqFgc9APMgPgNIZZh2yfv4=
+			2RxFuxW1JdCyuyUQnvjGEtOKFdKEjhrOxk/nifgtf6s=
 			</data>
 		</dict>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			E5WSWwJMsiKPWcIoZFb7P3F8j+45NKXxekUdfHQZFJY=
+			CkR5pY3jFGomEZH17mYITlD8Bxkfdf0D8jSv4sosdWc=
 			</data>
 		</dict>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wCUC/YMp/49uXqX3GT0zSg6RIMdOQ5bpevlcy1abTRc=
+			kg7kY5OrKq8V7xkHUcq7DV6IhsvlwshU2B247+SPrRA=
 			</data>
 		</dict>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sgSRqkcMDMDh9VvZ9LMQhYsLb8LZ5uDJccuK32VXM4I=
+			kxOqgoB8m6q0TxFP4SrwejxOdIe2orAgVaUiZzM+KlE=
 			</data>
 		</dict>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			leisIfl5hXX4CFAZfzVx2m7DBE29pi4O3ZmwW7flsow=
+			ThT2dWku6UjUja1c3Ysa6lBAi2bU8lIPypBJ2rvXVs0=
 			</data>
 		</dict>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nM/RMosWW7e84fFM4o+ihk07WWz9KbsMosC/qQQioTI=
+			RVy+1sN0CsVAOsjTXcphAA4zd+xRPMBuHhtUSRE7fRc=
 			</data>
 		</dict>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			leisIfl5hXX4CFAZfzVx2m7DBE29pi4O3ZmwW7flsow=
+			ThT2dWku6UjUja1c3Ysa6lBAi2bU8lIPypBJ2rvXVs0=
 			</data>
 		</dict>
 		<key>Modules/SmartScannerSDKSimulator.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EjJwFQF9oSw2cDCrIC1VAxf1KMfufSRemg7uWm3YSoM=
+			XlPs2+JYe8JF9v7L9oEBVzpBjRih9NVNbDh5niLksV8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
