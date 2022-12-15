@@ -110,7 +110,7 @@ This will ensure to import the simulator variation of the library when the Xcode
 
 The `SmartScannerSDK` library requires a SAM vendor authentication token in order to verify your identity.
 
-Setting up occur anywhere, as long as it happens before using any of the `SmartScannerSDK`'s features. Interacting with any other API methods beforehand, will result in `401` errors.
+Setting up occurs anywhere, as long as it happens before using any of the `SmartScannerSDK`'s features. Interacting with any other API methods beforehand will result in `401` errors.
 
 ```swift
 SmartScanner.getInstance().setup(token: "yoursamvendortoken")
@@ -132,7 +132,7 @@ let scanner: Scan = SmartScanner.getInstance().getScanInstance()
 ### Quick scan
 
 In order to start scanning, call the [`.scan(params:)`](API_REFERENCE.md#scanparams) method from the `Scan` instance.
-This method returns a Combine `AnyPublisher` and provides a [`ScanResult`](API_REFERENCE.md#scanresult) object which contains the data that was collected by the scanner.
+This method returns a Combined `AnyPublisher` and provides a [`ScanResult`](API_REFERENCE.md#scanresult) object which contains the data that was collected by the scanner.
 
 ```swift
 let config = ScanConfig()
@@ -142,13 +142,13 @@ scanner.scan(params: config)
     .sink { completion in
         switch completion {
         case .finished:
-            print("Finished!")
+            print("Completed!")
         case .failure(let error):
             // Scan process failed. Print the error
             print(error.description)
         }
     } receiveValue: { result in
-        // On success, print the list of deteceted devices
+        // On success, print the list of the detected devices.
         guard
             let result,
             let devices = result.devices
@@ -165,7 +165,7 @@ scanner.scan(params: config)
 <a id="observing-the-scanners-progress"></a>
 ### Observing the scanner's progress
 
-The `Scan` instances exposes an observer instance called [`.observeProgress()`](API_REFERENCE.md#observeprogress) that allows you to observe the progress of the scan (progress is values are ranging 0 - 100).
+The `Scan` instances exposes an observer instance called [`.observeProgress()`](API_REFERENCE.md#observeprogress) that allows you to observe the progress of the scan (progress values ranging from 0 - 100).
 The [`.observeProgress()`](API_REFERENCE.md#observeprogress) method returns a new Combine `AnyPublisher` with a value of type `Int` that progress values can be read from.
 
 ```swift
@@ -181,7 +181,7 @@ scanner
 <a id="observing-detected-devices"></a>
 ### Observing detected devices
 
-As it might be more suitable to get devices the moment they are detected, The `Scan` instance also exposes an [`.observeDevices()`](API_REFERENCE.md#observedevices) method that returns an array of [`Device`](API_REFERENCE.md#device) items.
+As it is better to get devices when they are detected, The `Scan` instance also exposes an [`.observeDevices()`](API_REFERENCE.md#observedevices) method that returns an array of [`Device`](API_REFERENCE.md#device) items.
 
 This allows you to retrieve a list of detected devices as they are detected.
 
@@ -209,13 +209,13 @@ scanner.killScan()
 <a id="custom-scanner-configurations"></a>
 ### Custom scanner configurations
 
-The `scan` method call site accepts a [`ScanConfig`](API_REFERENCE.md#scanconfig) object.
+The `scan` method accepts a [`ScanConfig`](API_REFERENCE.md#scanconfig) object.
 
-The [`ScanConfig`](API_REFERENCE.md#scanconfig) object allows the SDK client to control some of the scanner's configurations. For example, the following code snippet starts a scan that is using only `PING` to detect devices in the network and sets the scan to last only 2 minutes.
+The [`ScanConfig`](API_REFERENCE.md#scanconfig) object allows the SDK client to control the scanner's configurations. For example, the following code snippet starts a scan that is using only `PING` to detect devices in the network and sets the scan to last only 2 minutes.
 
 All scanner types can be found within the [`SamScannerType`](API_REFERENCE.md#samscannertype) enum.
 
->**Note** The default configurations are considered to be optimized for best scan results.
+>**Note** The default configurations are considered to be optimized for the best scan results.
 
 ```swift
 let config = ScanConfig(
@@ -232,7 +232,7 @@ scanner.scan(params: config)
 <a id="handling-401-unauthorized-errors"></a>
 ### Handling 401 Unauthorized errors
 
-In case the authentication token provided in Initialization and authentication phase is expired during the scan process, the scan process will automatically stop and return a [`SamSDKError`](API_REFERENCE.md#samsdkerror) instance with code of `.UNAUTHORIZED` (401).
+In case the authentication token provided in the initialization and authentication phase is expired during the scan process, the scan process will automatically stop and return a [`SamSDKError`](API_REFERENCE.md#samsdkerror) instance with code of `.UNAUTHORIZED` (401).
 
 In that scenario a new/refreshed token must be provided to the SDK by executing the [`.setup(token:)`](API_REFERENCE.md#setuptoken) function again.
 

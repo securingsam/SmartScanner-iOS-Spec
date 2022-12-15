@@ -103,7 +103,7 @@ class ScanResult: Codable  {
     // Scan start time
     let dateStr: String
 
-    // WiFi SSID if fetched succesfuly
+    // WiFi SSID if fetched successfully
     let wifiName: String?
 
     // Total devices found
@@ -140,9 +140,9 @@ enum SamScannerType {
 <a id="samsdkerror"></a>
 ## `SamSDKError`
 
-The errors received from the scanner are defined in the following enum and can be accessed when an error is received in the scan result.
+The errors received from the scanner are defined as enum values and can be accessed when an error is received in the scan result.
 
->**Note** Every error case contains a description tuple that contains the error code, description and title.
+>**Note** Every error case contains a description tuple that contains the error code, description, and title.
 
 ```swift
 enum SamSDKError: Error {
